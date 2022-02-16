@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:q02_college_management_system/department.dart';
 import 'package:q02_college_management_system/listify.dart';
 import 'package:q02_college_management_system/student.dart';
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'College Management System',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
       home: const MyHomePage(title: 'College Management System'),
     );
@@ -312,6 +314,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildTable() {
     return DataTable(
         border: TableBorder.all(),
+        headingRowColor: MaterialStateProperty.resolveWith<Color?>(
+            (_) => Theme.of(context).colorScheme.background.withOpacity(0.28)),
         columns: const [
           DataColumn(label: Text("Roll Number")),
           DataColumn(label: Text("Name")),
@@ -367,7 +371,7 @@ class _MyHomePageState extends State<MyHomePage> {
             textAlign: TextAlign.center,
           )
         : Container(
-            margin: const EdgeInsets.all(64.0),
+            margin: const EdgeInsets.symmetric(horizontal: 64.0, vertical: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -387,7 +391,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         : () => _changeIndex(1),
                     child: RichText(
                         text: const TextSpan(children: [
-                      TextSpan(text: "Next "),
+                      TextSpan(
+                          text: "Next ", style: TextStyle(color: Colors.white)),
                       WidgetSpan(
                           alignment: PlaceholderAlignment.middle,
                           child: Icon(Icons.chevron_right))
@@ -422,7 +427,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onEditingComplete: _searchStudent)),
         Center(
             child: Container(
-                margin: const EdgeInsets.all(16.0),
+                margin: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal, child: _buildTable()))),
         _buildTableFooter(),
