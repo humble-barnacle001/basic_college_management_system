@@ -11,8 +11,16 @@ class Listify<T extends Model> {
     return _list.isEmpty;
   }
 
+  bool isPresent(String key) {
+    return _isPresent(key);
+  }
+
   bool _isPresent(String key) {
     return _list.any((element) => element.getKey() == key);
+  }
+
+  int getLength() {
+    return _list.length;
   }
 
   T? getElement(String key) {
@@ -23,6 +31,10 @@ class Listify<T extends Model> {
     } else {
       return null;
     }
+  }
+
+  T? getElementAtIndex(int index) {
+    return (_list.length > index) ? _list.elementAt(index) : null;
   }
 
   bool addNew(String key, T newT) {

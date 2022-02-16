@@ -16,9 +16,21 @@ class Student extends Model {
   }
 
   @override
-  String toString() {
-    return "Roll: $roll,\nName: $name,\nDepartment Code: $deptCode,\nAddress: $address,\nPhone: $phone";
+  String toString([String? deptName]) {
+    return "Roll: $roll;\nName: $name;\nDepartment ${deptName == null ? "Code" : "Name"}: ${deptName ?? deptCode};\nAddress: $address;\nPhone: $phone";
   }
 }
 
-class StudentList extends Listify<Student> {}
+class StudentList extends Listify<Student> {
+  bool updateStudent(
+      String roll, String name, String deptCode, String address, int phone) {
+    Student? s = super.getElement(roll);
+    if (s == null) return false;
+
+    s.name = name;
+    s.deptCode = deptCode;
+    s.address = address;
+    s.phone = phone;
+    return true;
+  }
+}
