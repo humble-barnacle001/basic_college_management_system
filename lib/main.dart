@@ -382,7 +382,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       WidgetSpan(
                           alignment: PlaceholderAlignment.middle,
                           child: Icon(Icons.chevron_left)),
-                      TextSpan(text: " Previous")
+                      TextSpan(
+                          text: " Previous", style: TextStyle(color: Colors.white))
                     ]))),
                 ElevatedButton(
                     onPressed: _index ==
