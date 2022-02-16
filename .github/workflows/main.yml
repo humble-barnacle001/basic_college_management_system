@@ -22,7 +22,7 @@ jobs:
         cache-key: flutter-${{ runner.os }}-v0
     - run: flutter doctor -v
     - run: flutter pub get
-    - run: flutter build web --web-renderer html --base-href /basic_college_management_system/ --release
+    - run: flutter build web --base-href /basic_college_management_system/ --release
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.2.3
       with:
